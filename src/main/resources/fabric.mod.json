@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "spellbrookplus",
+  "version": "${version}",
+  "name": "SpellBrook+",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/voxxin/spellbrookplus"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/spellbrookplus/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.github.voxxin.spellbrookplus.client.SpellBrook_Client"
+    ],
+    "main": [
+      "com.github.voxxin.spellbrookplus.SpellBrook_"
+    ]
+  },
+  "mixins": [
+    "spellbrookplus.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}
