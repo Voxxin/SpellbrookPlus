@@ -1,83 +1,83 @@
 plugins {
     id 'fabric-loom' version '1.4-SNAPSHOT'
     id 'maven-publish'
+    id 'io.github.juuxel.loom-quiltflower' version '1.9.+'
 }
 
-version = project.mod_version
+version = "$mod_version-$release_type+build.$build_number-$project.minecraft_version"
 group = project.maven_group
 
+base {
+    archivesName = project.archives_base_name
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/spellbrookplus.accesswidener")
+}
+
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.isxander.dev/releases" }
+    maven { url = 'https://maven.quiltmc.org/repository/release' }
+    maven { url = 'https://maven.quiltmc.org/repository/snapshot' }
+    maven {
+        name = 'ParchmentMC'
+        url = 'https://maven.parchmentmc.org'
+    }
+    maven { url = "https://maven.terraformersmc.com/" }
+    maven { url = "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1" }
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    minecraft libs.minecraft
+    mappings loom.layered {
+        it.mappings("org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:intermediary-v2")
+        it.parchment("org.parchmentmc.data:parchment-1.20.1:${libs.versions.parchment.get()}@zip")
+        it.officialMojangMappings()
+    }
+    modImplementation libs.fabric.loader
 
+    implementation include('org.json:json:20220320')
+    implementation include("io.github.CDAGaming:DiscordIPC:0.8.1")
+
+    modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:1.1.2")
 }
 
 processResources {
     inputs.property "version", project.version
-    inputs.property "minecraft_version", project.minecraft_version
-    inputs.property "loader_version", project.loader_version
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version,
-                "minecraft_version": project.minecraft_version,
-                "loader_version": project.loader_version
+        expand "version": project.version
+    }
+    filesMatching("Constants.java") {
+        expand "version": project.version
     }
 }
 
-def targetJavaVersion = 17
 tasks.withType(JavaCompile).configureEach {
-    // ensure that the encoding is set to UTF-8, no matter what the system default is
-    // this fixes some edge cases with special characters not displaying correctly
-    // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
-    // If Javadoc is generated, this must be specified in that task too.
     it.options.encoding = "UTF-8"
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        it.options.release.set(targetJavaVersion)
-    }
+    it.options.getRelease().set(17)
 }
 
 java {
-    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    if (JavaVersion.current() < javaVersion) {
-        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
-    archivesBaseName = project.archives_base_name
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
     withSourcesJar()
+    toolchain.getLanguageVersion().set(JavaLanguageVersion.of(17))
 }
 
 jar {
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}"}
+        rename { "${it}_${base.archivesName.get()}" }
     }
 }
 
-// configure the maven publication
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
         }
     }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
-    }
+    repositories {}
 }

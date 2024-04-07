@@ -2,9 +2,14 @@
   "schemaVersion": 1,
   "id": "spellbrookplus",
   "version": "${version}",
-  "name": "SpellBrook+",
+  "name": "Spellbrook+",
   "description": "",
-  "authors": [],
+  "authors": [
+    "skyelander",
+    "ella",
+    "OliviaTheVampire",
+    "Dragonostic"
+  ],
   "contact": {
     "repo": "https://github.com/voxxin/spellbrookplus"
   },
@@ -13,17 +18,14 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.github.voxxin.spellbrookplus.client.SpellBrook_Client"
-    ],
-    "main": [
-      "com.github.voxxin.spellbrookplus.SpellBrook_"
+      "com.github.voxxin.spellbrookplus.SpellBrookPlus"
     ]
   },
+  "accessWidener": "spellbrookplus.accesswidener",
   "mixins": [
     "spellbrookplus.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "minecraft": "${minecraft_version}"
+    "fabricloader": ">=0.14.22"
   }
 }
