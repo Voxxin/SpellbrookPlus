@@ -39,6 +39,10 @@ dependencies {
     }
     modImplementation libs.fabric.loader
 
+    modCompileOnly ("com.terraformersmc:modmenu:9.0.0")
+    modRuntimeOnly ("com.terraformersmc:modmenu:9.0.0")
+
+
     implementation include('org.json:json:20220320')
     implementation include("io.github.CDAGaming:DiscordIPC:0.8.1")
 

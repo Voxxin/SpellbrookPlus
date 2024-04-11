@@ -101,7 +101,7 @@ public class DiscordManager {
     }
 
     public void stop() {
-        client.sendRichPresence(null);
+        client.close();
         active = false;
     }
 }

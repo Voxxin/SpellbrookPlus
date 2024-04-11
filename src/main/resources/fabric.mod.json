@@ -14,7 +14,7 @@
     "repo": "https://github.com/voxxin/spellbrookplus"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/spellbrookplus/icon.png",
+  "icon": "assets/spellbrookplus/textures/event/bobber_caught.png",
   "environment": "client",
   "entrypoints": {
     "client": [

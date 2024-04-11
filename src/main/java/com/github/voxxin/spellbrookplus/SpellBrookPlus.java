@@ -4,6 +4,7 @@ import com.github.voxxin.spellbrookplus.core.discord.DiscordManager;
 import com.github.voxxin.spellbrookplus.core.discord.Location;
 import com.github.voxxin.spellbrookplus.core.lifecycle.Lifecycle;
 import com.github.voxxin.spellbrookplus.core.lifecycle.Task;
+import com.github.voxxin.spellbrookplus.core.player.ModifyHeldItem;
 import com.github.voxxin.spellbrookplus.core.utilities.Constants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -42,6 +43,7 @@ public class SpellBrookPlus implements ClientModInitializer {
                     } catch (Error err) { logger().error(err); }
 
                 }, 10))
+                .add(Task.of(ModifyHeldItem::tick, 20))
         ;
     }
 

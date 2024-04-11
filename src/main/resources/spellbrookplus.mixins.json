@@ -4,11 +4,17 @@
   "package": "com.github.voxxin.spellbrookplus.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "client.SoundEventMixin"
+    "sounds.SoundEventMixin",
+    "world.entity.DisplayMixin",
+    "world.entity.InteractionMixin",
+    "world.entity.decoration.ArmorStandMixin",
+    "world.entity.projectile.FishingHookMixin"
   ],
   "client": [
-    "client.BossHealthOverlayMixin",
-    "client.MinecraftMixin"
+    "client.MinecraftMixin",
+    "client.gui.ChatScreenMixin",
+    "client.gui.components.BossHealthOverlayMixin",
+    "client.renderer.entity.EntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,4 +1,4 @@
-package com.github.voxxin.spellbrookplus.core.ext;
+package com.github.voxxin.spellbrookplus.core.mixin.asr;
 
 public interface BossHealthOverlayAccessor {
     String getBossBarName();

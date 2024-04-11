@@ -1,0 +1,11 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "spellbrookplus:event/bobber_caught.png",
+      "chars": [ "\uEF01" ],
+      "height": 20,
+      "ascent": 20
+    }
+  ]
+}

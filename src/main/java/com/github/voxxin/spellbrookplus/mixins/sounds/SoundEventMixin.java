@@ -1,6 +1,5 @@
-package com.github.voxxin.spellbrookplus.mixins.client;
+package com.github.voxxin.spellbrookplus.mixins.sounds;
 
-import com.github.voxxin.spellbrookplus.core.ext.SoundEventAccessor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import org.spongepowered.asm.mixin.Mixin;

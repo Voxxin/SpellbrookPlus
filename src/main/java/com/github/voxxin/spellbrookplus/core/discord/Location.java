@@ -1,7 +1,7 @@
 package com.github.voxxin.spellbrookplus.core.discord;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
-import com.github.voxxin.spellbrookplus.core.ext.BossHealthOverlayAccessor;
+import com.github.voxxin.spellbrookplus.core.mixin.asr.BossHealthOverlayAccessor;
 import com.github.voxxin.spellbrookplus.core.utilities.Static;
 import net.minecraft.client.Minecraft;
 
