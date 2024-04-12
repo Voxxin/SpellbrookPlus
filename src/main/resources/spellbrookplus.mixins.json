@@ -13,6 +13,7 @@
   "client": [
     "client.MinecraftMixin",
     "client.gui.ChatScreenMixin",
+    "client.gui.GuiMixin",
     "client.gui.components.BossHealthOverlayMixin",
     "client.renderer.entity.EntityRendererMixin"
   ],

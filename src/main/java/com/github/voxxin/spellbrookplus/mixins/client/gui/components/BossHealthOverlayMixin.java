@@ -1,5 +1,6 @@
 package com.github.voxxin.spellbrookplus.mixins.client.gui.components;
 
+import com.github.voxxin.spellbrookplus.SpellBrookPlus;
 import com.github.voxxin.spellbrookplus.core.mixin.asr.BossHealthOverlayAccessor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -29,7 +30,7 @@ public class BossHealthOverlayMixin implements BossHealthOverlayAccessor {
     private void renderBossBarName(GuiGraphics guiGraphics, CallbackInfo ci) {
         this.bossBarName = this.events.isEmpty() ? null : this.events.values().iterator().next().getName().getString();
 
-        if (this.minecraft.options.keyPlayerList.isDown()) ci.cancel();
+        if (SpellBrookPlus.connected() && this.minecraft.options.keyPlayerList.isDown()) ci.cancel();
     }
     @Override
     public String getBossBarName() {
