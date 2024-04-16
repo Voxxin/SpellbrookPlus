@@ -14,6 +14,7 @@
     "client.gui.GuiMixin",
     "client.gui.components.BossHealthOverlayMixin",
     "client.gui.components.ToastComponentMixin",
+    "client.gui.screens.PauseScreenMixin",
     "client.gui.screens.inventory.AbstractContainerScreenMixin",
     "client.renderer.entity.EntityRendererMixin"
   ],

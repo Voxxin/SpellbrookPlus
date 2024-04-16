@@ -1,4 +1,4 @@
-package com.github.voxxin.spellbrookplus.core.advancements;
+package com.github.voxxin.spellbrookplus.core.client.gui.advancements;
 
 public class AdvancementTime {
 

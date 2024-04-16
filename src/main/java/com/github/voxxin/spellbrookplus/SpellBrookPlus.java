@@ -1,5 +1,6 @@
 package com.github.voxxin.spellbrookplus;
 
+import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigManager;
 import com.github.voxxin.spellbrookplus.core.discord.DiscordManager;
 import com.github.voxxin.spellbrookplus.core.discord.Location;
 import com.github.voxxin.spellbrookplus.core.level.HandleMagicEvents;
@@ -31,19 +32,21 @@ public class SpellBrookPlus implements ClientModInitializer {
                 .add(Task.of(Location::check, 20))
                 .add(Task.of(() -> {
                     try {
-                        if (connected() && DISCORD_MANAGER == null)
+                        if (connected() && ConfigManager.discordRPC.getValue() && DISCORD_MANAGER == null)
                             DISCORD_MANAGER = new DiscordManager().start();
 
                         if (DiscordManager.active) {
                             DISCORD_MANAGER.update();
-                            if (!connected()) DISCORD_MANAGER.stop();
-                        } else if (connected())
+                            if (!connected() || !ConfigManager.discordRPC.getValue()) DISCORD_MANAGER.stop();
+                        } else if (connected() && ConfigManager.discordRPC.getValue())
                             DISCORD_MANAGER.start();
                     } catch (Error err) { logger().error(err); }
 
                 }, 10))
                 .add(Task.of(HandleMagicEvents::tick, 1))
         ;
+
+        ConfigManager.initalizeConfig();
 
     }
 

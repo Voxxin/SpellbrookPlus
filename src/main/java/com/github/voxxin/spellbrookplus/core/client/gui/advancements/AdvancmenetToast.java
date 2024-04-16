@@ -1,4 +1,4 @@
-package com.github.voxxin.spellbrookplus.core.advancements;
+package com.github.voxxin.spellbrookplus.core.client.gui.advancements;
 
 import com.github.voxxin.spellbrookplus.core.client.gui.misc.FakeGuiEntity;
 import net.fabricmc.api.EnvType;

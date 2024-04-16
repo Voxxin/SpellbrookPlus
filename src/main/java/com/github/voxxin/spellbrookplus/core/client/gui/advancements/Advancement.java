@@ -1,6 +1,5 @@
-package com.github.voxxin.spellbrookplus.core.advancements;
+package com.github.voxxin.spellbrookplus.core.client.gui.advancements;
 
-import com.github.voxxin.spellbrookplus.core.utilities.Constants;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 

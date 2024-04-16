@@ -2,6 +2,17 @@
   "toast.spellbrookplus.glowing": "(Glowing)",
   "toast.spellbrookplus.magic.title": "Try to find the following!",
   "toast.spellbrookplus.magic.subtitle": "Look for glowing :)",
-  "gui.spellbrookplus.academy_quests.next_reset": "Quests reset: %02d"
+  "gui.spellbrookplus.academy_quests.next_reset": "Quests reset: %02d",
 
+  "config.spellbrookplus.category.general": "General",
+
+  "config.spellbrookplus.option.assignments_reset_timer": "Magic Quest Timer Reset",
+  "config.spellbrookplus.option.discord_rpc": "Discord Rich Presence",
+
+  "config.spellbrookplus.option.magic_glow": "Magic Entities Glow",
+  "config.spellbrookplus.option.magic_advancement": "Magic Entities Spawning Advancement",
+  "config.spellbrookplus.option.always_bright": "Magic Entities Always Visible",
+
+  "config.spellbrookplus.option.fishing_ping": "Fishing Bite Ping",
+  "config.spellbrookplus.option.fishing_alert": "Fishing Bite Visual Alert"
 }

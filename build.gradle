@@ -46,6 +46,8 @@ dependencies {
     implementation include('org.json:json:20220320')
     implementation include("io.github.CDAGaming:DiscordIPC:0.8.1")
 
+    implementation include('com.github.voxxin:MultiConfigAPI:-SNAPSHOT')
+
     modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:1.1.2")
 }
 

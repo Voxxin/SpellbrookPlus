@@ -1,7 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.client.gui.components;
 
-import com.github.voxxin.spellbrookplus.core.advancements.AdvancementTime;
-import com.github.voxxin.spellbrookplus.core.advancements.AdvancmenetToast;
+import com.github.voxxin.spellbrookplus.core.client.gui.advancements.AdvancementTime;
+import com.github.voxxin.spellbrookplus.core.client.gui.advancements.AdvancmenetToast;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;

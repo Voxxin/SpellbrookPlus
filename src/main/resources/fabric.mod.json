@@ -14,11 +14,14 @@
     "repo": "https://github.com/voxxin/spellbrookplus"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/spellbrookplus/textures/event/bobber_caught.png",
+  "icon": "assets/spellbrookplus/temp-icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
       "com.github.voxxin.spellbrookplus.SpellBrookPlus"
+    ],
+    "modmenu": [
+      "com.github.voxxin.spellbrookplus.core.client.gui.conifg.ModMenuImplementation"
     ]
   },
   "accessWidener": "spellbrookplus.accesswidener",
@@ -26,6 +29,5 @@
     "spellbrookplus.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.22"
   }
 }

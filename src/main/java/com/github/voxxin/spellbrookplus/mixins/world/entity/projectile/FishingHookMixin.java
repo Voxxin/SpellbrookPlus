@@ -1,6 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.world.entity.projectile;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
+import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigManager;
 import com.github.voxxin.spellbrookplus.core.utilities.Chars;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -51,9 +52,11 @@ public abstract class FishingHookMixin extends Entity {
 
         if (biting && timer < 1) {
             timer++;
-            player.playSound(SoundEvents.ARROW_HIT_PLAYER, 4, 2);
-            this.setCustomNameVisible(true);
-            this.setCustomName(Chars.styledUnicode("\uEF01"));
+            if (ConfigManager.fishingPing.getValue()) player.playSound(SoundEvents.ARROW_HIT_PLAYER, 4, 2);
+            if (ConfigManager.fishingAlert.getValue()) {
+                this.setCustomNameVisible(true);
+                this.setCustomName(Chars.styledUnicode("\uEF01"));
+            }
         } else if (!biting && timer > 0) {
             timer = 0;
             this.setCustomNameVisible(false);

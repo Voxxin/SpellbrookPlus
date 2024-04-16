@@ -1,5 +1,6 @@
 package com.github.voxxin.spellbrookplus.mixins.client.gui.screens.inventory;
 
+import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigManager;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -30,7 +31,7 @@ public abstract class AbstractContainerScreenMixin extends Screen {
 
     @Inject(at = @At("TAIL"), method = "renderLabels")
     private void render(GuiGraphics guiGraphics, int mouseX, int mouseY, CallbackInfo ci) {
-        if (this.title.getString().contains("\uE02D")) {
+        if (ConfigManager.assignmentsResetTimer.getValue() && this.title.getString().contains("\uE02D")) {
             String resetTimeString = String.format(Component.translatable("gui.spellbrookplus.academy_quests.next_reset").getString(), calculateTimeUntilMidnight());
             int textSize = (this.imageWidth - 2 - this.font.width(resetTimeString)) / 2;
             int textPosY = this.titleLabelY - 14;
