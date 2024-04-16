@@ -1,13 +1,14 @@
 package com.github.voxxin.spellbrookplus.mixins.client.renderer.entity;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
+import com.github.voxxin.spellbrookplus.core.mixin.ext.EntityExtender;
 import com.github.voxxin.spellbrookplus.core.mixin.ext.EntityRendererExtender;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
@@ -20,6 +21,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityRenderer.class)
 public abstract class EntityRendererMixin<T extends Entity> implements EntityRendererExtender {
@@ -29,6 +31,13 @@ public abstract class EntityRendererMixin<T extends Entity> implements EntityRen
     @Shadow @Final protected EntityRenderDispatcher entityRenderDispatcher;
     @Shadow public abstract Font getFont();
 
+    @Inject(at = @At("HEAD"), method = "getBlockLightLevel", cancellable = true)
+    private void getBlockLightLevel(T entity, BlockPos pos, CallbackInfoReturnable<Integer> cir) {
+        if (((EntityExtender)entity).sb$getCustomLightLevel() >= 0) {
+            cir.setReturnValue(((EntityExtender) entity).sb$getCustomLightLevel());
+        }
+    }
+
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
     private void render(T entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
         if (!SpellBrookPlus.connected()) return;
@@ -36,14 +45,14 @@ public abstract class EntityRendererMixin<T extends Entity> implements EntityRen
         if (entity instanceof Player && ((Player) entity).getDisplayName().getString().contains(" ")) {
             renderNameTag(entity, (MutableComponent) entity.getDisplayName(), poseStack, buffer, packedLight);
         } else if (entity instanceof FishingHook && entity.shouldShowName()) {
-            sb$renderNameTagNoBackground(entity, (MutableComponent) entity.getDisplayName(), poseStack, buffer, packedLight);
+            sp$renderNameTagNoBackground(entity, (MutableComponent) entity.getDisplayName(), poseStack, buffer, packedLight);
         }
 
         ci.cancel();
     }
 
     @Override
-    public void sb$renderNameTagNoBackground(Entity entity, Component displayName, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    public void sp$renderNameTagNoBackground(Entity entity, Component displayName, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         double d = this.entityRenderDispatcher.distanceToSqr(entity);
         if (!(d > 4096.0)) {
             boolean bl = !entity.isDiscrete();

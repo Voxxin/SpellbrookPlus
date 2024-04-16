@@ -6,21 +6,21 @@ public class Task {
     int wait;
     int pointer = 0;
 
-    private Task(int w, Runnable r) {
-        wait = w;
-        runnable = r;
+    private Task(int wait, Runnable r) {
+        this.wait = wait;
+        this.runnable = r;
     }
 
     public void run() {
-        if (pointer == wait) {
-            runnable.run();
-            pointer = 0;
+        if (this.pointer == this.wait) {
+            this.runnable.run();
+            this.pointer = 0;
         }
-        else pointer++;
+        else this.pointer++;
     }
 
-    public static Task of(Runnable r, int w) {
-        return new Task(w, r);
+    public static Task of(Runnable r, int wait) {
+        return new Task(wait, r);
     }
 
 }

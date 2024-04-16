@@ -9,7 +9,7 @@ public class Chars {
 
     public static Component styledUnicode(String unicodeCharacter) {
         return Component.literal(unicodeCharacter).setStyle(Style.EMPTY.withFont(
-                new ResourceLocation("spellbrookplus:text")
+                new ResourceLocation(Constants.MOD_ID + ":text")
         )).withStyle(ChatFormatting.WHITE);
     }
 }

@@ -1,7 +1,7 @@
 package com.github.voxxin.spellbrookplus.core.discord;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
-import com.github.voxxin.spellbrookplus.core.mixin.asr.BossHealthOverlayAccessor;
+import com.github.voxxin.spellbrookplus.core.mixin.ext.BossHealthOverlayExtender;
 import com.github.voxxin.spellbrookplus.core.utilities.Static;
 import net.minecraft.client.Minecraft;
 
@@ -82,7 +82,7 @@ public enum Location {
 
         Minecraft client = Minecraft.getInstance();
         String dimension = client.level.dimension().location().toString();
-        String bossBarName = ((BossHealthOverlayAccessor) client.gui.getBossOverlay()).getBossBarName();
+        String bossBarName = ((BossHealthOverlayExtender) client.gui.getBossOverlay()).getBossBarName();
 
         if (bossBarName != null && bossBarName.contains("\uE021") && !bossBarName.contains("Wilderness")) {
             if (bossBarName.matches(".*(?<= )(.*?)(?= ).*")) {

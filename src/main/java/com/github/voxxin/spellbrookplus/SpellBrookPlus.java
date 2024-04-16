@@ -2,14 +2,13 @@ package com.github.voxxin.spellbrookplus;
 
 import com.github.voxxin.spellbrookplus.core.discord.DiscordManager;
 import com.github.voxxin.spellbrookplus.core.discord.Location;
+import com.github.voxxin.spellbrookplus.core.level.HandleMagicEvents;
 import com.github.voxxin.spellbrookplus.core.lifecycle.Lifecycle;
 import com.github.voxxin.spellbrookplus.core.lifecycle.Task;
-import com.github.voxxin.spellbrookplus.core.player.ModifyHeldItem;
 import com.github.voxxin.spellbrookplus.core.utilities.Constants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ServerData;
@@ -43,8 +42,9 @@ public class SpellBrookPlus implements ClientModInitializer {
                     } catch (Error err) { logger().error(err); }
 
                 }, 10))
-                .add(Task.of(ModifyHeldItem::tick, 20))
+                .add(Task.of(HandleMagicEvents::tick, 1))
         ;
+
     }
 
     public static boolean connected() {

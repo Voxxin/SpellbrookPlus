@@ -5,16 +5,16 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "sounds.SoundEventMixin",
-    "world.entity.DisplayMixin",
-    "world.entity.InteractionMixin",
+    "world.entity.EntityMixin",
     "world.entity.decoration.ArmorStandMixin",
     "world.entity.projectile.FishingHookMixin"
   ],
   "client": [
     "client.MinecraftMixin",
-    "client.gui.ChatScreenMixin",
     "client.gui.GuiMixin",
     "client.gui.components.BossHealthOverlayMixin",
+    "client.gui.components.ToastComponentMixin",
+    "client.gui.screens.inventory.AbstractContainerScreenMixin",
     "client.renderer.entity.EntityRendererMixin"
   ],
   "injectors": {

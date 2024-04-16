@@ -1,7 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.client.gui.components;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
-import com.github.voxxin.spellbrookplus.core.mixin.asr.BossHealthOverlayAccessor;
+import com.github.voxxin.spellbrookplus.core.mixin.ext.BossHealthOverlayExtender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.BossHealthOverlay;
@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Mixin(BossHealthOverlay.class)
 
-public class BossHealthOverlayMixin implements BossHealthOverlayAccessor {
+public class BossHealthOverlayMixin implements BossHealthOverlayExtender {
     @Shadow
     @Final
     Map<UUID, LerpingBossEvent> events;
