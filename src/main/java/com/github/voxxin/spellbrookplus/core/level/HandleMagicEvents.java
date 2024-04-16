@@ -5,8 +5,8 @@ import com.github.voxxin.spellbrookplus.core.client.gui.advancements.Advancement
 import com.github.voxxin.spellbrookplus.core.client.gui.advancements.AdvancementTime;
 import com.github.voxxin.spellbrookplus.core.client.gui.advancements.AdvancmenetToast;
 import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigManager;
-import com.github.voxxin.spellbrookplus.core.mixin.ext.EntityExtender;
-import com.github.voxxin.spellbrookplus.core.mixin.ext.GuiExtender;
+import com.github.voxxin.spellbrookplus.core.mixin.extenders.EntityExtender;
+import com.github.voxxin.spellbrookplus.core.mixin.extenders.GuiExtender;
 import com.github.voxxin.spellbrookplus.core.utilities.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;

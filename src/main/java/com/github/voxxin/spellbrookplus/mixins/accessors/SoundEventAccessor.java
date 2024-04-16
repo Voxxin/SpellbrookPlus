@@ -1,4 +1,4 @@
-package com.github.voxxin.spellbrookplus.core.mixin.asr;
+package com.github.voxxin.spellbrookplus.mixins.accessors;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;

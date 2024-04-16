@@ -1,10 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.world.entity;
 
-import com.github.voxxin.spellbrookplus.core.mixin.ext.EntityExtender;
-import net.minecraft.util.ColorRGBA;
+import com.github.voxxin.spellbrookplus.core.mixin.extenders.EntityExtender;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.scores.PlayerTeam;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;

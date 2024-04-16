@@ -1,8 +1,8 @@
 package com.github.voxxin.spellbrookplus.mixins.client.renderer.entity;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
-import com.github.voxxin.spellbrookplus.core.mixin.ext.EntityExtender;
-import com.github.voxxin.spellbrookplus.core.mixin.ext.EntityRendererExtender;
+import com.github.voxxin.spellbrookplus.core.mixin.extenders.EntityExtender;
+import com.github.voxxin.spellbrookplus.core.mixin.extenders.EntityRendererExtender;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;

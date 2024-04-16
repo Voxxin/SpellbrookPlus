@@ -1,4 +1,4 @@
-package com.github.voxxin.spellbrookplus.core.mixin.ext;
+package com.github.voxxin.spellbrookplus.core.mixin.extenders;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -1,7 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.client.gui;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
-import com.github.voxxin.spellbrookplus.core.mixin.ext.GuiExtender;
+import com.github.voxxin.spellbrookplus.core.mixin.extenders.GuiExtender;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.DebugScreenOverlay;
@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(Gui.class)
 public class GuiMixin implements GuiExtender {

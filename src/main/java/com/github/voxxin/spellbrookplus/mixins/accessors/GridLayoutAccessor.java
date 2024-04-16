@@ -1,4 +1,4 @@
-package com.github.voxxin.spellbrookplus.core.mixin.asr;
+package com.github.voxxin.spellbrookplus.mixins.accessors;
 
 import net.minecraft.client.gui.layouts.GridLayout;
 import net.minecraft.client.gui.layouts.LayoutElement;

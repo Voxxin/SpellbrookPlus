@@ -2,7 +2,7 @@ package com.github.voxxin.spellbrookplus.mixins.client.gui.screens;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
 import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigScreen;
-import com.github.voxxin.spellbrookplus.core.mixin.asr.GridLayoutAccessor;
+import com.github.voxxin.spellbrookplus.mixins.accessors.GridLayoutAccessor;
 import com.github.voxxin.spellbrookplus.core.utilities.Chars;
 import com.github.voxxin.spellbrookplus.core.utilities.Constants;
 import net.minecraft.client.gui.components.Button;
@@ -54,10 +54,11 @@ public class PauseScreenMixin extends Screen {
             if (SpellBrookPlus.connected()) {
                 buttons.add(
                         Button.builder(
-                                        Chars.styledUnicode("\uEF00"),
+                                        Component.literal(":O"),
                                         button -> {
                                             this.minecraft.setScreen(new ConfigScreen(this));
                                         })
+                                .bounds(x, y, 20, 20)
                                 .build()
                 );
             }

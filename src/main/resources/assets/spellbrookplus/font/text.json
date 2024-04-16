@@ -3,7 +3,7 @@
     {
       "type": "bitmap",
       "file": "spellbrookplus:badge/user.png",
-      "chars": [ "\uEF00" ],
+      "chars": [ "\uE000" ],
       "height": 10,
       "ascent": 9
     },

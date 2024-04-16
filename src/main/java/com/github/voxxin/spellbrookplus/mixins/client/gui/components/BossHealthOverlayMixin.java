@@ -1,7 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.client.gui.components;
 
 import com.github.voxxin.spellbrookplus.SpellBrookPlus;
-import com.github.voxxin.spellbrookplus.core.mixin.ext.BossHealthOverlayExtender;
+import com.github.voxxin.spellbrookplus.core.mixin.extenders.BossHealthOverlayExtender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.BossHealthOverlay;

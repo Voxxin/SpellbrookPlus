@@ -10,6 +10,7 @@
     "world.entity.projectile.FishingHookMixin"
   ],
   "client": [
+    "accessors.GridLayoutAccessor",
     "client.MinecraftMixin",
     "client.gui.GuiMixin",
     "client.gui.components.BossHealthOverlayMixin",

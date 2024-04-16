@@ -1,6 +1,4 @@
-package com.github.voxxin.spellbrookplus.core.mixin.ext;
-
-import net.minecraft.util.ColorRGBA;
+package com.github.voxxin.spellbrookplus.core.mixin.extenders;
 
 import java.awt.*;
 

@@ -29,7 +29,7 @@ public class ConfigScreen extends Screen {
     private TabNavigationBar tabNavigationBar;
     @Nullable
     private GridLayout bottomButtons;
-    public static final ResourceLocation FOOTER_SEPERATOR = new ResourceLocation("textures/gui/footer_separator.png");
+    public static final ResourceLocation FOOTER_SEPARATOR = new ResourceLocation("textures/gui/footer_separator.png");
 
     public ConfigScreen(Screen parent) {
         super(Component.translatable("config.spellbrookplus.title"));
@@ -58,7 +58,7 @@ public class ConfigScreen extends Screen {
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         this.renderDirtBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-        guiGraphics.blit(FOOTER_SEPERATOR, 0, Mth.roundToward(this.height - 36 - 2, 2), 0.0F, 0.0F, this.width, 2, 32, 2);
+        guiGraphics.blit(FOOTER_SEPARATOR, 0, Mth.roundToward(this.height - 36 - 2, 2), 0.0F, 0.0F, this.width, 2, 32, 2);
     }
     @Override
     public void onClose() {
