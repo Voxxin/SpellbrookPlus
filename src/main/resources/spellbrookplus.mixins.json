@@ -4,6 +4,7 @@
   "package": "com.github.voxxin.spellbrookplus.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "local.LanguageMixin",
     "sounds.SoundEventMixin",
     "world.entity.EntityMixin",
     "world.entity.decoration.ArmorStandMixin",

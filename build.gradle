@@ -1,15 +1,10 @@
 plugins {
-    id 'fabric-loom' version '1.4-SNAPSHOT'
+    id 'fabric-loom' version '1.6-SNAPSHOT'
     id 'maven-publish'
-    id 'io.github.juuxel.loom-quiltflower' version '1.9.+'
 }
 
 version = "$mod_version-$release_type+build.$build_number-$project.minecraft_version"
 group = project.maven_group
-
-base {
-    archivesName = project.archives_base_name
-}
 
 loom {
     accessWidenerPath = file("src/main/resources/spellbrookplus.accesswidener")
@@ -31,13 +26,20 @@ repositories {
 }
 
 dependencies {
+
+//    minecraft libs.minecraft
+//    mappings loom.officialMojangMappings()
+//    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
     minecraft libs.minecraft
     mappings loom.layered {
         it.mappings("org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:intermediary-v2")
         it.parchment("org.parchmentmc.data:parchment-1.20.1:${libs.versions.parchment.get()}@zip")
         it.officialMojangMappings()
     }
+
     modImplementation libs.fabric.loader
+    include modImplementation(fabricApi.module("fabric-resource-loader-v0", project.fabric_version));
 
     modCompileOnly ("com.terraformersmc:modmenu:9.0.0")
     modRuntimeOnly ("com.terraformersmc:modmenu:9.0.0")
@@ -67,6 +69,7 @@ tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
     it.options.getRelease().set(17)
 }
+
 
 java {
     withSourcesJar()
