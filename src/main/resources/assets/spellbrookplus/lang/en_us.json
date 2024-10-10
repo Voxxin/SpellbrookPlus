@@ -1,18 +1,42 @@
 {
   "toast.spellbrookplus.glowing": "(Glowing)",
+
   "toast.spellbrookplus.magic.title": "Try to find the following!",
   "toast.spellbrookplus.magic.subtitle": "Look for glowing :)",
+
+  "toast.spellbrookplus.bingoReset.title": "It's time...",
+  "toast.spellbrookplus.bingoReset.subtitle": "A bingo has reset!",
+
   "gui.spellbrookplus.academy_quests.next_reset": "Quests reset: %02d",
 
   "config.spellbrookplus.category.general": "General",
 
   "config.spellbrookplus.option.assignments_reset_timer": "Magic Quest Timer Reset",
+  "config.spellbrookplus.option.assignments_reset_advancement": "Advancement when Assignments Reset",
+  "config.spellbrookplus.option.assignments_reset_always": "Notify of Assignments Reset Always",
+
   "config.spellbrookplus.option.discord_rpc": "Discord Rich Presence",
+
+  "config.spellbrookplus.option.spell_suggestions": "Show Spell Suggestions",
+
 
   "config.spellbrookplus.option.magic_glow": "Magic Entities Glow",
   "config.spellbrookplus.option.magic_advancement": "Magic Entities Spawning Advancement",
   "config.spellbrookplus.option.always_bright": "Magic Entities Always Visible",
 
   "config.spellbrookplus.option.fishing_ping": "Fishing Bite Ping",
-  "config.spellbrookplus.option.fishing_alert": "Fishing Bite Visual Alert"
+  "config.spellbrookplus.option.fishing_alert": "Fishing Bite Visual Alert",
+
+  "categories.spellbrookplus": "Spellbrook+",
+
+  "categories.spellbrookplus.quick_casts": "Quick Casts",
+
+  "key.spellbrookplus.quick_cast.1": "Bound spell 1: Right Right Left",
+  "key.spellbrookplus.quick_cast.2": "Bound spell 2: Left Right Right",
+  "key.spellbrookplus.quick_cast.3": "Bound spell 3: Left Left Left",
+  "key.spellbrookplus.quick_cast.4": "Bound spell 4: Right Left Right",
+  "key.spellbrookplus.quick_cast.5": "Bound spell 5: Left Left Right",
+  "key.spellbrookplus.quick_cast.6": "Bound spell 6: Right Left Left",
+  "key.spellbrookplus.quick_cast.7": "Bound spell 7: Right Right Right",
+  "key.spellbrookplus.quick_cast.8": "Bound spell 8: Left Right Left"
 }

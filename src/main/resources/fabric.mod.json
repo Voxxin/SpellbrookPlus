@@ -18,7 +18,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.github.voxxin.spellbrookplus.SpellBrookPlus"
+      "com.github.voxxin.spellbrookplus.SpellbrookPlus"
     ],
     "modmenu": [
       "com.github.voxxin.spellbrookplus.core.client.gui.conifg.ModMenuImplementation"

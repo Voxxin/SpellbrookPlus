@@ -1,5 +1,6 @@
 package com.github.voxxin.spellbrookplus;
 
+import com.github.voxxin.spellbrookplus.core.client.SpellbrookKeybinds;
 import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigManager;
 import com.github.voxxin.spellbrookplus.core.discord.DiscordManager;
 import com.github.voxxin.spellbrookplus.core.discord.Location;
@@ -17,10 +18,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Environment(EnvType.CLIENT)
-public class SpellBrookPlus implements ClientModInitializer {
+public class SpellbrookPlus implements ClientModInitializer {
     private static final Logger LOGGER = LogManager.getLogger(Constants.MOD_NAME);
     public static DiscordManager DISCORD_MANAGER;
     private static Lifecycle LIFECYCLE;
+    private static final SpellbrookKeybinds KEYBINDS = new SpellbrookKeybinds();
     @Override
     public void onInitializeClient() {
         Constants.MOD_MENU_PRESENT = FabricLoader.getInstance().isModLoaded("modmenu");
@@ -44,6 +46,11 @@ public class SpellBrookPlus implements ClientModInitializer {
 
                 }, 10))
                 .add(Task.of(HandleMagicEvents::tick, 1))
+                .add(Task.of(() -> {
+                    if (SpellbrookPlus.connected()) {
+                        KEYBINDS.tick();
+                    }
+                }, 0))
         ;
 
         ConfigManager.initalizeConfig();

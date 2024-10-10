@@ -1,6 +1,6 @@
 package com.github.voxxin.spellbrookplus.mixins.client.renderer.entity;
 
-import com.github.voxxin.spellbrookplus.SpellBrookPlus;
+import com.github.voxxin.spellbrookplus.SpellbrookPlus;
 import com.github.voxxin.spellbrookplus.core.mixin.extenders.EntityExtender;
 import com.github.voxxin.spellbrookplus.core.mixin.extenders.EntityRendererExtender;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -40,7 +40,7 @@ public abstract class EntityRendererMixin<T extends Entity> implements EntityRen
 
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
     private void render(T entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
-        if (!SpellBrookPlus.connected()) return;
+        if (!SpellbrookPlus.connected()) return;
 
         if (entity instanceof Player && ((Player) entity).getDisplayName().getString().contains(" ")) {
             renderNameTag(entity, (MutableComponent) entity.getDisplayName(), poseStack, buffer, packedLight);

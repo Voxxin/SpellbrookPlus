@@ -1,9 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.world.entity.decoration;
 
-import com.github.voxxin.spellbrookplus.SpellBrookPlus;
+import com.github.voxxin.spellbrookplus.SpellbrookPlus;
 import net.minecraft.client.Minecraft;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.ArmorStand;
@@ -26,7 +24,7 @@ public abstract class ArmorStandMixin extends Entity {
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void tick(CallbackInfo ci) {
-        if (!SpellBrookPlus.connected()) return;
+        if (!SpellbrookPlus.connected()) return;
 
         ArmorStand armorStand = (ArmorStand) (Object) this;
         if (armorStand.hasCustomName() && Minecraft.getInstance().level != null) {

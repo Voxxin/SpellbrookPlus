@@ -1,6 +1,6 @@
 package com.github.voxxin.spellbrookplus.core.discord;
 
-import com.github.voxxin.spellbrookplus.SpellBrookPlus;
+import com.github.voxxin.spellbrookplus.SpellbrookPlus;
 import com.github.voxxin.spellbrookplus.core.mixin.extenders.BossHealthOverlayExtender;
 import com.github.voxxin.spellbrookplus.core.utilities.Static;
 import net.minecraft.client.Minecraft;
@@ -75,7 +75,7 @@ public enum Location {
     }
 
     public static void check() {
-        if (!SpellBrookPlus.connected()) {
+        if (!SpellbrookPlus.connected()) {
             Static.Location = UNKNOWN;
             return;
         }

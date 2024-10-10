@@ -1,9 +1,7 @@
 package com.github.voxxin.spellbrookplus.mixins.client.gui.screens;
 
-import com.github.voxxin.spellbrookplus.SpellBrookPlus;
 import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigScreen;
 import com.github.voxxin.spellbrookplus.mixins.accessors.GridLayoutAccessor;
-import com.github.voxxin.spellbrookplus.core.utilities.Chars;
 import com.github.voxxin.spellbrookplus.core.utilities.Constants;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.layouts.GridLayout;

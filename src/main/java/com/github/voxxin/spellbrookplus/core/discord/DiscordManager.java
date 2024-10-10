@@ -1,6 +1,6 @@
 package com.github.voxxin.spellbrookplus.core.discord;
 
-import com.github.voxxin.spellbrookplus.SpellBrookPlus;
+import com.github.voxxin.spellbrookplus.SpellbrookPlus;
 import com.github.voxxin.spellbrookplus.core.utilities.Constants;
 import com.github.voxxin.spellbrookplus.core.utilities.Static;
 import com.google.gson.JsonArray;
@@ -13,7 +13,6 @@ import com.jagrosh.discordipc.entities.User;
 
 import java.time.Instant;
 import java.time.ZoneOffset;
-import java.util.Objects;
 
 public class DiscordManager {
     public static boolean active = false;
@@ -22,7 +21,7 @@ public class DiscordManager {
 
     public DiscordManager start() {
         if (!active) {
-            SpellBrookPlus.logger().info("Starting Discord RPC client...");
+            SpellbrookPlus.logger().info("Starting Discord RPC client...");
             client = new IPCClient(1226293239552806972L);
             client.setListener(new IPCListener() {
                 @Override
@@ -47,7 +46,7 @@ public class DiscordManager {
 
                 @Override
                 public void onReady(IPCClient client) {
-                    SpellBrookPlus.logger().info("Discord RPC client connected!");
+                    SpellbrookPlus.logger().info("Discord RPC client connected!");
                     active = true;
                     start = Instant.now();
                     update();

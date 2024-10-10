@@ -1,5 +1,6 @@
 package com.github.voxxin.spellbrookplus.core.mixin.extenders;
 
+import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.Component;
 
 public interface GuiExtender {
@@ -13,4 +14,6 @@ public interface GuiExtender {
     void sp$setOverlayMessage(Component message);
     void sp$setTitleMessage(Component message);
     void sp$setSubtitleMessage(Component message);
+
+    ChatComponent sp$chat();
 }

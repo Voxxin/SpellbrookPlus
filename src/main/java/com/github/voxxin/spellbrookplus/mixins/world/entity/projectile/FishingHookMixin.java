@@ -1,25 +1,18 @@
 package com.github.voxxin.spellbrookplus.mixins.world.entity.projectile;
 
-import com.github.voxxin.spellbrookplus.SpellBrookPlus;
+import com.github.voxxin.spellbrookplus.SpellbrookPlus;
 import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigManager;
 import com.github.voxxin.spellbrookplus.core.utilities.Chars;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -44,7 +37,7 @@ public abstract class FishingHookMixin extends Entity {
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Ljava/lang/Math;max(II)I", shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
     public void tick(CallbackInfo ci, float f, BlockPos blockPos, FluidState fluidState, boolean bl) {
-        if (!SpellBrookPlus.connected()) return;
+        if (!SpellbrookPlus.connected()) return;
         Minecraft client = Minecraft.getInstance();
         Player player = client.player;
 
