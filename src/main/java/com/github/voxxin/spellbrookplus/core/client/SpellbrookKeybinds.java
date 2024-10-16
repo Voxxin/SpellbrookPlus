@@ -2,6 +2,7 @@ package com.github.voxxin.spellbrookplus.core.client;
 
 import com.github.voxxin.spellbrookplus.core.client.model.KeybindCategoryModel;
 import com.github.voxxin.spellbrookplus.core.client.model.KeybindModel;
+import com.github.voxxin.spellbrookplus.core.level.HandleMagicEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.network.protocol.game.ServerboundPlayerActionPacket;

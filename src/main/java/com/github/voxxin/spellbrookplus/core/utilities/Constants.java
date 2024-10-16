@@ -9,7 +9,6 @@ public class Constants {
     public static final String MOD_ID = "spellbrookplus";
     public static final String MOD_NAME = "Spellbrook+";
     public static final String MOD_VERSION = String.valueOf(FabricLoader.getInstance().getModContainer(MOD_ID).get().getMetadata().getVersion());
-    public static final String PUBLIC_BUKKIT_VALUES = "PublicBukkitValues";
     public static boolean MOD_MENU_PRESENT = false;
 
     public static final Color SpellbrookPurple = new Color(158, 110, 218);

@@ -21,16 +21,13 @@ public class Advancement {
         this.titleColor = titleColor;
         this.subtitle = subtitle;
         this.subtitleColor = subtitleColor;
-        this.BACKGROUND_SPRITE = new ResourceLocation("toast/advancement");
+        this.BACKGROUND_SPRITE = new ResourceLocation("textures/gui/sprites/toast/advancement.png");
         this.soundEvent = null;
         this.advancementTime = null;
-
-        System.out.println(BACKGROUND_SPRITE);
     }
 
     public void setBackgroundSprite(ResourceLocation location) {
-        System.out.println(location);
-        this.BACKGROUND_SPRITE = location;
+        this.BACKGROUND_SPRITE = location != null ? location : this.BACKGROUND_SPRITE;
     }
 
     public void setAdvancementSoundEvent(AdvancementSoundEvent soundEvent) {

@@ -12,6 +12,7 @@ public interface GuiExtender {
     Component sp$getSubtitleMessage();
 
     void sp$setOverlayMessage(Component message);
+    void sp$setOverlayMessage(Component message, int tickDuration);
     void sp$setTitleMessage(Component message);
     void sp$setSubtitleMessage(Component message);
 

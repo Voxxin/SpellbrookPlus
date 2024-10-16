@@ -24,12 +24,9 @@ public class Advancement {
         this.BACKGROUND_SPRITE = new ResourceLocation("toast/advancement");
         this.soundEvent = null;
         this.advancementTime = null;
-
-        System.out.println(BACKGROUND_SPRITE);
     }
 
     public void setBackgroundSprite(ResourceLocation location) {
-        System.out.println(location);
         this.BACKGROUND_SPRITE = location;
     }
 

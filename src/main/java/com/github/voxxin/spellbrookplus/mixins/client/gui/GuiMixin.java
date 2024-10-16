@@ -38,6 +38,7 @@ public abstract class GuiMixin implements GuiExtender {
     @Shadow @Nullable private Component subtitle;
 
     @Shadow @Final private ChatComponent chat;
+    @Shadow private int overlayMessageTime;
     @Unique private Component previousMessageString;
 
     @Inject(method = "Lnet/minecraft/client/gui/Gui;displayScoreboardSidebar(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/scores/Objective;)V", at = @At("HEAD"), cancellable = true)
@@ -109,6 +110,12 @@ public abstract class GuiMixin implements GuiExtender {
     @Override
     public void sp$setOverlayMessage(Component message) {
         this.overlayMessageString = message;
+    }
+
+    @Override
+    public void sp$setOverlayMessage(Component message, int tickDuration) {
+        this.overlayMessageString = message;
+        this.overlayMessageTime = tickDuration;
     }
 
     @Override

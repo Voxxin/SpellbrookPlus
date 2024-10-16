@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
+import com.jagrosh.discordipc.entities.ActivityType;
 import com.jagrosh.discordipc.entities.Packet;
 import com.jagrosh.discordipc.entities.RichPresence;
 import com.jagrosh.discordipc.entities.User;
@@ -92,8 +93,8 @@ public class DiscordManager {
             builder.setState(location.description)
                     .setDetails(location.name)
                     .setStartTimestamp(Instant.ofEpochSecond(start.toEpochMilli()).atOffset(ZoneOffset.UTC).toEpochSecond())
-                    .setLargeImage(location.largeIcon.key(), "HideawayPlus v" + Constants.MOD_VERSION)
-                    .setSmallImage(location.smallIcon.key(), "Nothing to see here...")
+                    .setLargeImage(location.largeIcon.key(), "SpellbrookPlus v" + Constants.MOD_VERSION)
+                    .setActivityType(ActivityType.Playing)
                     .setButtons(buttonsArray);
             client.sendRichPresence(builder.build());
         } else start();

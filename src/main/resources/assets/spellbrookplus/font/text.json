@@ -2,13 +2,6 @@
   "providers": [
     {
       "type": "bitmap",
-      "file": "spellbrookplus:badge/user.png",
-      "chars": [ "\uE000" ],
-      "height": 10,
-      "ascent": 9
-    },
-    {
-      "type": "bitmap",
       "file": "spellbrookplus:event/bobber_caught.png",
       "chars": [ "\uEF01" ],
       "height": 20,

@@ -38,23 +38,25 @@ public class FakeGuiEntity {
         graphics.pose().pushPose();
         graphics.pose().translate((double)x, (double)y, 50.0);
         graphics.pose().mulPoseMatrix(scaleMatrix);
-        graphics.pose().translate(offset.x(), offset.y(), offset.z());
+        graphics.pose().translate(offset.x, offset.y, offset.z);
 
-        baseRotation.rotateX((float)Math.PI);
+        Quaternionf baseRotationCopy = new Quaternionf(baseRotation);
+        baseRotationCopy.rotateX((float)Math.PI);
 
-        graphics.pose().mulPose(baseRotation);
-
+        graphics.pose().mulPose(baseRotationCopy);
         Lighting.setupForEntityInInventory();
+        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
         if (rotation != null) {
             rotation.conjugate();
-            this.entityRenderDispatcher.overrideCameraOrientation(rotation);
+            entityRenderDispatcher.overrideCameraOrientation(rotation);
         }
-        this.entityRenderDispatcher.setRenderShadow(false);
+
+        entityRenderDispatcher.setRenderShadow(false);
         RenderSystem.runAsFancy(() -> {
-            this.entityRenderDispatcher.render(entity, 0.0, 0.0, 0.0, 0.0F, 1.0F, graphics.pose(), graphics.bufferSource(), 15728880);
+            entityRenderDispatcher.render(entity, 0.0, 0.0, 0.0, 0.0F, 1.0F, graphics.pose(), graphics.bufferSource(), 15728880);
         });
         graphics.flush();
-        this.entityRenderDispatcher.setRenderShadow(true);
+        entityRenderDispatcher.setRenderShadow(true);
         graphics.pose().popPose();
         Lighting.setupFor3DItems();
     }

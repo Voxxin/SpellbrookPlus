@@ -2,6 +2,8 @@ package com.github.voxxin.spellbrookplus.core.client.gui.advancements;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 
 import java.util.Optional;
@@ -26,8 +28,8 @@ public class AdvancementIcon {
         return new AdvancementIcon(Icon.ITEM_STACK, Optional.of(itemStack), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
-    public static AdvancementIcon createRenderedEntityIcon(LivingEntity entity, Quaternionf baseRotation, Quaternionf rotation) {
-        return new AdvancementIcon(Icon.RENDERED_ENTITY, Optional.empty(), Optional.of(rotation),
+    public static AdvancementIcon createRenderedEntityIcon(@NotNull LivingEntity entity, @NotNull Quaternionf baseRotation, @Nullable Quaternionf rotation) {
+        return new AdvancementIcon(Icon.RENDERED_ENTITY, Optional.empty(), Optional.ofNullable(rotation),
                 Optional.of(baseRotation), Optional.of(entity));
     }
 
@@ -40,7 +42,7 @@ public class AdvancementIcon {
     }
 
     public Quaternionf getRotation() {
-        return rotation.get();
+        return rotation.orElse(null);
     }
 
     public Quaternionf getBaseRotation() {

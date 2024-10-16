@@ -10,68 +10,58 @@ public enum Location {
     UNKNOWN(
             "Using Spellbrook+",
             "Exploring the blocks... 🚀",
-            PresenceImage.Large.SCENE_DARK,
-            PresenceImage.Small.ROUNDEL
+            PresenceImage.Large.SCENE_DARK
     ),
 
     SPAWN (
             "At spawn",
             "Awaiting adventure... 🔮",
-            PresenceImage.Large.SCENE,
-            PresenceImage.Small.ROUNDEL
+            PresenceImage.Large.SCENE
     ),
 
     SURVIVAL_WORLD(
             "In the Survival Realm",
             "Trying out new spells! 🪄",
-            PresenceImage.Large.SCENE,
-            PresenceImage.Small.ROUNDEL
+            PresenceImage.Large.SCENE
     ),
 
     IN_TOWN(
             "Set below :3",
             "Casting friendship! 🫂",
-            PresenceImage.Large.SCENE,
-            PresenceImage.Small.ROUNDEL
+            PresenceImage.Large.SCENE
     ),
 
     RESOURCE_WORLD(
             "In the Recourse Realm",
             "Excavation magic! 🧨",
-            PresenceImage.Large.SCENE,
-            PresenceImage.Small.ROUNDEL
+            PresenceImage.Large.SCENE
     ),
 
     THE_NETHER(
             "In the Nether",
             "Screw the Nether 🎶",
-            PresenceImage.Large.SCENE,
-            PresenceImage.Small.ROUNDEL
+            PresenceImage.Large.SCENE
     ),
 
     THE_END(
             "In the End",
             "Is this really it? 🐲",
-            PresenceImage.Large.SCENE,
-            PresenceImage.Small.ROUNDEL
+            PresenceImage.Large.SCENE
     ),
     ;
 
     public String name;
     public final String description;
     public final PresenceImage.Large largeIcon;
-    public final PresenceImage.Small smallIcon;
 
     Location(
             String name,
             String description,
-            PresenceImage.Large largeIcon,
-            PresenceImage.Small smallIcon
+            PresenceImage.Large largeIcon
     ) {
         this.name = name;
         this.description = description;
         this.largeIcon = largeIcon;
-        this.smallIcon = smallIcon;
     }
 
     public static void check() {

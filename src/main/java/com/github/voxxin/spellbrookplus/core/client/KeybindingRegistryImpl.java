@@ -58,7 +58,6 @@ public class KeybindingRegistryImpl {
         newKeysAll.removeAll(OUR_KEYBINDS);
         newKeysAll.addAll(OUR_KEYBINDS);
 
-        System.out.println(newKeysAll.size());
         return newKeysAll.toArray(new KeyMapping[0]);
     }
 }

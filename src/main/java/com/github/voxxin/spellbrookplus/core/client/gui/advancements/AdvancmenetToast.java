@@ -43,6 +43,7 @@ public class AdvancmenetToast implements Toast {
         } else if (this.advancement.getIcon().getIcon() == AdvancementIcon.Icon.RENDERED_ENTITY) {
             AdvancementIcon icon = this.advancement.getIcon();
             FakeGuiEntity fakeGuiEntity = new FakeGuiEntity();
+
             fakeGuiEntity.renderEntity(guiGraphics, 8, 8, 1, new Vector3f(0.75f, icon.getEntity().getBbHeight() - 0.0655f, 0F), icon.getBaseRotation(), icon.getRotation(), icon.getEntity());
         }
 

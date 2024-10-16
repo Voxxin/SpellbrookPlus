@@ -6,7 +6,6 @@ import com.github.voxxin.spellbrookplus.core.client.gui.advancements.Advancement
 import com.github.voxxin.spellbrookplus.core.client.gui.advancements.AdvancementTime;
 import com.github.voxxin.spellbrookplus.core.client.gui.advancements.AdvancmenetToast;
 import com.github.voxxin.spellbrookplus.core.client.gui.conifg.ConfigManager;
-import com.github.voxxin.spellbrookplus.core.client.gui.misc.FakeGuiEntity;
 import com.github.voxxin.spellbrookplus.core.mixin.extenders.ChatComponentExtender;
 import com.github.voxxin.spellbrookplus.core.mixin.extenders.EntityExtender;
 import com.github.voxxin.spellbrookplus.core.mixin.extenders.GuiExtender;
@@ -18,17 +17,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Display;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.Interaction;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -171,12 +169,21 @@ public class HandleMagicEvents {
 
     private static void handleMagicEntity() {
         GuiExtender gui = (GuiExtender) client.gui;
+
+        Style textureStyle = Style.EMPTY.withFont(ResourceLocation.tryParse("spellbrook:small")).withColor(gui.sp$getOverlayMessage().getStyle().getColor());
+        Component newMessage = Component.empty().append(Component.literal("Look for something glowing...").withStyle(textureStyle));
+
         if (ConfigManager.magicGlow.getValue() && entityTick == 0) gui.sp$setOverlayMessage(gui.sp$getOverlayMessage().copy().append(" " + Component.translatable("toast.spellbrookplus.glowing").getString()));
         if (entityTick >= 1000) gui.sp$setOverlayMessage(Component.empty());
 
         Entity entity = getEntity();
         if (entity != null) {
-            gui.sp$setOverlayMessage(Component.empty());
+            gui.sp$setOverlayMessage(newMessage);
+
+            List<Entity> boundingBoxEntity = client.level.getEntitiesOfClass(Entity.class, entity.getBoundingBox().inflate(1)).stream().filter(e -> e instanceof Interaction).toList();
+            for (Entity e : boundingBoxEntity) {
+                e.kill();
+            }
 
             EntityExtender extEntity = (EntityExtender) entity;
             if (ConfigManager.magicGlow.getValue()) extEntity.sb$setSharedFlagIsGlowing(true);
@@ -186,8 +193,9 @@ public class HandleMagicEvents {
 
             if (entity instanceof ItemEntity || entity instanceof Display.ItemDisplay) {
                 icon = AdvancementIcon.createItemStackIcon(entity instanceof ItemEntity ? ((ItemEntity) entity).getItem() : entity.getSlot(0).get());
-            } else if (entity instanceof RemotePlayer) {
-                icon = AdvancementIcon.createRenderedEntityIcon((LivingEntity) entity, new Quaternionf(0, 0, 0, 1), new Quaternionf(0, 0, 0, 1));
+            } else if (entity instanceof RemotePlayer remotePlayer) {
+                RemotePlayer newRemote = new RemotePlayer(remotePlayer.clientLevel, remotePlayer.getGameProfile());
+                icon = AdvancementIcon.createRenderedEntityIcon(newRemote, new Quaternionf(), null);
             } else {
                 icon = AdvancementIcon.createItemStackIcon(new ItemStack(Items.AIR));
             }
@@ -209,29 +217,37 @@ public class HandleMagicEvents {
     }
 
     private static Entity getEntity() {
-        List<Entity> entities = client.level.getEntitiesOfClass(Entity.class, client.player.getBoundingBox().inflate(40));
-        for (Entity entity : entities) {
+        return client.level.getEntitiesOfClass(Entity.class,
+                        client.player.getBoundingBox().inflate(25)).stream()
+                .filter(entity -> {
+                    int tickDiff = Math.abs(entityTick - entity.tickCount);
 
-            System.out.println(entity.getClass());
+                    if (entity instanceof RemotePlayer player) {
+                        return (player.getName().getString().contains("§") || player.getName().getString().endsWith("MagicWizard")) &&
+                                tickDiff <= 1 && isVisible(player);
+                    }
+                    if (entity instanceof ItemEntity itemEntity) {
+                        ItemStack stack = itemEntity.getItem();
+                        return stack.getItem() == Items.PAPER &&
+                                stack.hasTag() &&
+                                stack.getTag().contains("CustomModelData") &&
+                                tickDiff <= 1;
+                    }
+                    if (entity instanceof Display.ItemDisplay display) {
+                        ItemStack stack = display.getSlot(0).get();
+                        return stack.getItem() == Items.PAPER &&
+                                stack.hasTag() &&
+                                stack.getTag().contains("CustomModelData") &&
+                                tickDiff <= 1;
+                    }
+                    return false;
+                })
+                .findFirst()
+                .orElse(null);
+    }
 
-            if (entity instanceof RemotePlayer remotePlayer &&
-                    remotePlayer.getName().getString().contains("§") &&
-                    Math.abs(entityTick - entity.tickCount) <= 2) {
-                return entity;
-            }
-
-            if (entity instanceof ItemEntity || entity instanceof Display.ItemDisplay) {
-                ItemStack itemStack = entity instanceof ItemEntity ? ((ItemEntity) entity).getItem() : entity.getSlot(0).get();
-
-                if ((itemStack.getItem() == Items.PAPER || itemStack.getItem() == Items.LEATHER_HORSE_ARMOR) &&
-                        itemStack.getTag() != null &&
-                        itemStack.getTag().contains("CustomModelData") &&
-                        Math.abs(entityTick - entity.tickCount) <= 1) {
-                    return entity;
-                }
-            }
-        }
-        return null;
+    private static boolean isVisible(Entity entity) {
+        return entity instanceof LivingEntity livingEntity && !livingEntity.isInvisible() && !livingEntity.hasEffect(MobEffects.INVISIBILITY);
     }
 }
 
