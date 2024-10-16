@@ -29,6 +29,7 @@ import net.minecraft.world.item.TooltipFlag;
 import org.joml.Quaternionf;
 
 import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -223,8 +224,9 @@ public class HandleMagicEvents {
                     int tickDiff = Math.abs(entityTick - entity.tickCount);
 
                     if (entity instanceof RemotePlayer player) {
-                        return (player.getName().getString().contains("§") || player.getName().getString().endsWith("MagicWizard")) &&
-                                tickDiff <= 1 && isVisible(player);
+
+                        return (checkAllNames(player) &&
+                                tickDiff <= 1 && isVisible(player));
                     }
                     if (entity instanceof ItemEntity itemEntity) {
                         ItemStack stack = itemEntity.getItem();
@@ -249,5 +251,26 @@ public class HandleMagicEvents {
     private static boolean isVisible(Entity entity) {
         return entity instanceof LivingEntity livingEntity && !livingEntity.isInvisible() && !livingEntity.hasEffect(MobEffects.INVISIBILITY);
     }
+
+    private static boolean checkAllNames(Entity entity) {
+        String entityName = entity.getName().getString();
+        if (entityName.contains("§")) return true;
+        if (entityName.endsWith("MagicWizard")) return true;
+
+        Component customName = entity.getCustomName();
+        if (customName != null) {
+            String customNameString = customName.getString();
+            if (customNameString.contains("§")) return true;
+            if (customNameString.endsWith("MagicWizard")) return true;
+        }
+
+        String displayName = entity.getDisplayName().getString();
+        if (displayName.contains("§")) return true;
+        if (displayName.endsWith("MagicWizard")) return true;
+
+        return false;
+    }
+
+
 }
 
